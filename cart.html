@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+    line-height: 0cm;
+    font-size:20px;
+    color: indigo;
+    font-weight:bolder;
+    display: block;
+    margin: auto;
+    padding-left: 100px;
+    }
+    #main{
+     
+        margin-top: 50px;
+    }
+    .prod{
+        clear:both;
+        height: 400px;
+        width: 250px;
+        display:flex;
+        flex-direction: column;
+    }
+    .nav{
+        display: flex;
+        float:right;
+    }
+    a img{
+     
+      width:70px;
+        height:70px;
+     margin:5px;
+     border-radius: 50%;
+ }
+    .top{
+        display: flex;
+        float:left;
+        background-color: whitesmoke;
+    }
+    
+    .nav:nth-child(1){
+     clear:left;
+    }
+    button{
+       
+        background-color: white;
+        color:purple;
+        font-size: 17px;
+        font-weight: bolder;
+    }
+   #grid{
+     display: grid;
+     grid-gap:10px;
+     margin-top: 50px;;
+   }
+   #grid img{
+     width: 100px;
+     height:100px;
+   }
+
+</style>
+<body>
+  <div class="nav">
+    <a href="products.html" id="home"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzKrtgeP9QsPh0E-ZE53v_cWxTv1PzEYXJErYI5IklbrBIv3zGn61Zh2LsO-NC57gSNis&usqp=CAU" id="check"></a>
+    <a href="checkout.html" id="check"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSraFl81_o7ALBySyNEqzV9-kn-DINAhTXDPQ&usqp=CAU" id="check"></a>
+    <a href="payment.html" id="pay"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGePrZmmUxokRKsPOjSefUIXBMDjXN1mbe22G8TmgjaKWUuxd7lM4LeMeNl73t_uHBmlk&usqp=CAU" id="check"></a>
+  </div>
+    
+    <div id="main">       
+    <h2>Shopping Bag</h2>
+<br>
+    <input type="text" id="promo" placeholder="enter promocode" />
+    <button onclick="promo()">Apply Promocode</button>
+    
+    <a href="checkout.html">Proceed to checkout</a>
+   
+    </div>
+    <div id="grid">
+    <div id="carts"></div>
+    <div id="prices"></div>
+    <div id="total"></div>
+  </div>
+  </body>
+</html>
+
+<script>
+  var price_div = document.getElementById("prices");
+  var data_div = document.getElementById("carts");
+  function appendProducts(el) {
+    let div = document.createElement("div");
+    let img = document.createElement("img");
+    img.src = el.img;
+
+    let p_name = document.createElement("p");
+    p_name.innerHTML = el.name;
+
+    let p_price = document.createElement("p");
+    p_price.innerHTML = el.price;
+    p_price.setAttribute("class","disc")
+
+    let p_brand = document.createElement("p");
+    p_brand.innerHTML = el.brand;
+
+    div.append(img, p_name, p_price);
+    data_div.append(div);
+  }
+  
+  function showCart() {
+    let data = JSON.parse(localStorage.getItem("cart"));
+    data_div.innerHTML = null;
+    data.forEach(function (el) {
+      appendProducts(el);
+    });
+  }
+  showCart();
+  
+function promo(){
+  let prom = document.getElementById("promo").value;
+  let pay= document.querySelectorAll(".disc");
+  let sum=0;
+
+    if (prom == "masai30") {
+    for(let i=0;i<pay.length;i++){
+    let paym=Number(pay[i].innerHTML)*30/100;
+    sum+=paym;
+    }
+  }
+    else{
+   for(let i=0;i<pay.length;i++){
+     alert("Promocode is invalid.")
+    let paym=Number(pay[i].innerHTML);
+    sum+=paym;
+   }
+    }
+
+  let p=document.createElement('p');
+  p.innerHTML=`Total=${sum}`;
+
+  let t=document.getElementById("total");
+  t.append(p);
+
+}
+</script>
+
+
+

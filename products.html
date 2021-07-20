@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+    line-height: 0cm;
+    font-size:20px;
+    color: indigo;
+    font-weight:bolder;
+    display: block;
+    margin: auto;
+    padding-left: 100px;
+    }
+    #main{
+        display:grid;
+        grid-template-columns:auto auto auto auto;
+        grid-gap:10px;
+        clear:both;
+        margin-top: 50px;
+        margin-left: 50px;
+    }
+    .prod{
+        clear:both;
+        height: 400px;
+        width: 250px;
+        display:flex;
+        flex-direction: column;
+    }
+    .zoom{
+        height: 250px;
+        width: 250px;  
+
+    }
+    .zoom:hover{
+        transform: scale(1.5);
+        transition: 0.5s;
+    }
+    .nav{
+        display: flex;
+        float:right;
+    }
+    .top{
+        clear: both;;
+        display:block;
+    }
+    a img{
+     
+        width:70px;
+        height:70px;
+        margin:5px;
+        border-radius: 50%;
+    }
+    .nav:nth-child(1){
+     clear:left;
+    }
+    .addcart{
+        display:block;
+        border-radius: 80px;
+
+    }
+    button{
+        height: 50px;
+        width:25;
+        background-color: white;
+        color:purple;
+        font-size: 17px;
+        font-weight: bolder;
+    }
+   
+</style>
+<body>
+    <div class="nav">
+        <a href="cart.html" id="cart"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQMGXqbMo-BEJN3_g4Otr_DvqKBXnGaEH6sQ&usqp=CAU" id="check"></a>
+      <a href="checkout.html" id="check"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSraFl81_o7ALBySyNEqzV9-kn-DINAhTXDPQ&usqp=CAU" id="check"></a>
+      <a href="payment.html" id="pay"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGePrZmmUxokRKsPOjSefUIXBMDjXN1mbe22G8TmgjaKWUuxd7lM4LeMeNl73t_uHBmlk&usqp=CAU" id="check"></a>
+    </div>
+    <div id="top">
+       <button onclick="high()">Sort by price low to hight</button>
+       <button onclick="low()">Sort by price high to low</button>
+       <button onclick="filter()">Filter by brand</button>
+       <button onclick="low()">Filter by price range</button>
+    </div>
+    <div id="main">       
+    </div>
+</body>
+</html>
+<script src="script.js"></script>
